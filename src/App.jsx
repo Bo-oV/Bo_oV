@@ -18,14 +18,15 @@ import {
   WandSparkles,
   X,
 } from "lucide-react";
-import phones from "./assets/sviato-phones.png";
+import phones from "./assets/sviato-hero-mockup.webp";
+import telegramIcon from "./assets/telegram.svg";
 
 const links = [["Про нас", "about"], ["Sviato", "sviato"], ["Як працюємо", "process"], ["Зв’язатися", "contact"]];
 const values = [[UsersRound, "Люди перш за все", "Ми слухаємо, досліджуємо і створюємо з емпатією."], [Sparkles, "Чистий і продуманий досвід", "Інтерфейси, які допомагають з першого дотику."], [ShieldCheck, "Результат і відповідальність", "Доводимо ідеї до запуску та вимірюваного ефекту."]];
 const features = [[CalendarDays, "Події та важливі дати", "Створюйте власні події та додавайте події друзів до календаря."], [Heart, "Wishlist і бронювання", "Зберігайте подарунки й посилання, діліться списком та уникайте однакових подарунків."], [WandSparkles, "AI-підбір подарунків", "Отримуйте ідеї з урахуванням віку, інтересів і стилю людини."], [Tags, "Українські бренди", "Знаходьте цікаві товари локальних брендів, майстрів і крафтярів."]];
 const steps = [[Search, "01", "Досліджуємо", "Розуміємо проблему та перевіряємо гіпотезу."], [PanelsTopLeft, "02", "Проєктуємо", "Будуємо зрозумілий сценарій і візуальну систему."], [Code2, "03", "Розробляємо", "Перетворюємо дизайн на стабільний адаптивний продукт."], [TrendingUp, "04", "Розвиваємо", "Аналізуємо використання й покращуємо найважливіше."]];
 function Logo() { return <a className="logo" href="#top" aria-label="Bo oV — на головну">Bo_<i>oV</i></a>; }
-function Button({ children, href, secondary = false }) { return <a className={`button ${secondary ? "secondary" : ""}`} href={href}>{children}</a>; }
+function Button({ children, href, secondary = false, external = false }) { return <a className={`button ${secondary ? "secondary" : ""}`} href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>{children}</a>; }
 
 export function App() {
   const [menu, setMenu] = useState(false);
@@ -50,7 +51,7 @@ export function App() {
       <section id="sviato" className="sviato reveal"><div className="section-intro"><p className="eyebrow">Продукт 01</p><h2>Sviato — подарунки без стресу, важливі моменти без хаосу.</h2><p>Український застосунок для подій, wishlist і продуманого вибору подарунків. Усе важливе — від ідеї до бронювання — зібране в одному місці.</p><div className="case-links"><a className="text-link" href="https://play.google.com/store/apps/details?id=com.sviato.app" target="_blank" rel="noopener noreferrer">Відкрити в Google Play <ArrowRight size={16}/></a><a className="text-link muted-link" href="https://www.instagram.com/sviato_app/" target="_blank" rel="noopener noreferrer">Дивитися Instagram <Camera size={16}/></a></div></div><div className="feature-grid">{features.map(([Icon, title, text]) => <article key={title}><Icon size={25} strokeWidth={1.75} absoluteStrokeWidth aria-hidden="true"/><h3>{title}</h3><p>{text}</p></article>)}</div></section>
       <section id="process" className="process reveal"><p className="eyebrow">Як ми працюємо</p><h2>Від корисної ідеї — до продукту в руках користувача.</h2><div className="steps">{steps.map(([Icon, number, title, text]) => <article key={number}><div className="step-top"><Icon size={22} strokeWidth={1.75} absoluteStrokeWidth aria-hidden="true"/><span>{number}</span></div><h3>{title}</h3><p>{text}</p></article>)}</div></section>
       <section id="about" className="about reveal"><div><p className="eyebrow">Про Bo_oV</p><h2>Невелика команда. Велика увага до деталей.</h2><p>Bo_oV — українська продуктова студія. Ми створюємо власні цифрові продукти, поєднуючи продуктове мислення, дизайн і розробку.</p></div><div className="founder"><p className="eyebrow">Засновник</p><h3>Павло Махновець</h3><a className="text-link" href="https://www.linkedin.com/in/pavlo-makhnovets-2867a1118" target="_blank" rel="noopener noreferrer">LinkedIn <BriefcaseBusiness size={17}/></a></div></section>
-      <section id="contact" className="contact reveal"><div><p className="eyebrow">Почнімо розмову</p><h2>Є ідея, партнерство або просто хочете познайомитися?</h2><p>Напишіть нам — будемо раді обговорити продукт, співпрацю або розвиток Sviato.</p></div><Button href="mailto:giftapp.sviato@gmail.com">Написати Bo_oV <ArrowRight size={18}/></Button></section>
+      <section id="contact" className="contact reveal"><div><p className="eyebrow">Почнімо розмову</p><h2>Є ідея, партнерство або просто хочете познайомитися?</h2><p>Напишіть нам — будемо раді обговорити продукт, співпрацю або розвиток Sviato.</p></div><Button href="https://t.me/liberieritis_wd" external>Написати Bo_oV <img className="telegram-icon" src={telegramIcon} alt="" aria-hidden="true"/></Button></section>
     </main>
     <footer><Logo/><p>Цифрові продукти з України</p><div className="footer-links"><a href="https://play.google.com/store/apps/details?id=com.sviato.app" aria-label="Google Play"><Play size={20}/></a><a href="https://www.instagram.com/sviato_app/" aria-label="Instagram"><Camera size={20}/></a><a href="https://www.linkedin.com/in/pavlo-makhnovets-2867a1118" aria-label="LinkedIn"><BriefcaseBusiness size={20}/></a></div><small>© 2026 Bo_oV. Усі права захищено.</small></footer>
   </div>;
